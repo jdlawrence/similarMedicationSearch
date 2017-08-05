@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputForm extends Component {
   constructor(props) {
@@ -14,9 +15,8 @@ class InputForm extends Component {
   }
 
   handleSubmit(event) {
-    // alert('A name was submitted: ' + this.state.value);
-    this.props.getMedMatches(this.state.value);
     event.preventDefault();
+    this.props.getMedMatches(this.state.value);
   }
 
   render() {
@@ -31,5 +31,9 @@ class InputForm extends Component {
     );
   }
 }
+
+InputForm.propTypes = {
+  getMedMatches: PropTypes.func.isRequired
+};
 
 export default InputForm;
