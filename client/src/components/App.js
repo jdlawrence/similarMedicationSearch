@@ -11,15 +11,26 @@ class App extends Component {
       searchResults: []
     };
     this.getMedMatches = this.getMedMatches.bind(this);
+    this.getAlternatives = this.getAlternatives.bind(this);
+  }
+  getAlternatives(rxcui) {
+    console.log('rxcui', rxcui);
+    axios.post('/api/lookup', { rxcui})
+      .then(data => {
+        console.log('data', data);
+        // let results = data.data.drugGroup.conceptGroup[1].conceptProperties;
+        // this.setState({ searchResults: results });
+      })
+      .catch(err => {
+        console.log('errhwere', err);
+      });
   }
   getMedMatches(medicine) {
-    console.log('client', medicine);
-    axios.post('/api', { medicine })
+    axios.post('/api/search', { medicine })
       .then(data => {
+        console.log('group', data.data.drugGroup.conceptGroup);
         let results = data.data.drugGroup.conceptGroup[1].conceptProperties;
-        console.log('data', results);
-        this.setState({searchResults: results});
-        return results;
+        this.setState({ searchResults: results });
       })
       .catch(err => {
         console.log('errhwere', err);
@@ -30,7 +41,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <InputForm getMedMatches={this.getMedMatches} />
-        <SearchResults results={this.state.searchResults}/>
+        <SearchResults
+          getAlternatives={this.getAlternatives}
+          results={this.state.searchResults}
+        />
       </div>
     );
   }
