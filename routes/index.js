@@ -20,11 +20,9 @@ router.post('/lookup', function (req, res) {
   rp(`https://rxnav.nlm.nih.gov/REST/rxcui/${req.body.rxcui}/related.json?tty=IN`)
     .then(data => {
       const rxcui = JSON.parse(data).relatedGroup.conceptGroup[0].conceptProperties[0].rxcui;
-      rp(`https://rxnav.nlm.nih.gov/REST/rxcui/${rxcui}/related.json?tty=SCD+SBD`)
+      rp(`https://rxnav.nlm.nih.gov/REST/rxcui/${rxcui}/related.json?tty=SBD`)
         .then(innerData => {
-          let related = JSON.parse(innerData).relatedGroup
-          console.log('innerData', related);
-          res.send(related);
+          res.send(innerData);
         })
         .catch(innerErr => {
           console.log('innerErr', innerErr);
