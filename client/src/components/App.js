@@ -16,11 +16,10 @@ class App extends Component {
     this.getAlternatives = this.getAlternatives.bind(this);
   }
   getAlternatives(rxcui) {
-    console.log('rxcui', rxcui);
-    axios.post('/api/lookup', { rxcui})
+    axios.post('/api/lookup', { rxcui })
       .then(data => {
-        let alternatives = data.data.relatedGroup.conceptGroup[0].conceptProperties; 
-        this.setState({ alternatives});
+        let alternatives = data.data.relatedGroup.conceptGroup[0].conceptProperties;
+        this.setState({ alternatives });
       })
       .catch(err => {
         console.log('errhwere', err);
@@ -29,7 +28,6 @@ class App extends Component {
   getMedMatches(medicine) {
     axios.post('/api/search', { medicine })
       .then(data => {
-        console.log('group', data.data.drugGroup.conceptGroup);
         let results = data.data.drugGroup.conceptGroup[1].conceptProperties;
         this.setState({ searchResults: results });
       })
@@ -41,14 +39,18 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <InputForm getMedMatches={this.getMedMatches} />
-        <SearchResults
-          getAlternatives={this.getAlternatives}
-          results={this.state.searchResults}
-        />
-        <Alternatives
-          alternatives={this.state.alternatives}
-        />
+        <div className="left-column">
+          <InputForm getMedMatches={this.getMedMatches} />
+          <SearchResults
+            getAlternatives={this.getAlternatives}
+            results={this.state.searchResults}
+          />
+        </div>
+        <div className="right-colum">
+          <Alternatives
+            alternatives={this.state.alternatives}
+          />
+        </div>
       </div>
     );
   }
