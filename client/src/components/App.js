@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Header from './Header';
 import InputForm from './InputForm';
 import SearchResults from './SearchResults';
+import Alternatives from './Alternatives';
 import axios from 'axios';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      alternatives: [],
       searchResults: []
     };
     this.getMedMatches = this.getMedMatches.bind(this);
@@ -17,9 +19,8 @@ class App extends Component {
     console.log('rxcui', rxcui);
     axios.post('/api/lookup', { rxcui})
       .then(data => {
-        console.log('data', data);
-        // let results = data.data.drugGroup.conceptGroup[1].conceptProperties;
-        // this.setState({ searchResults: results });
+        let alternatives = data.data.relatedGroup.conceptGroup[0].conceptProperties; 
+        this.setState({ alternatives});
       })
       .catch(err => {
         console.log('errhwere', err);
@@ -44,6 +45,9 @@ class App extends Component {
         <SearchResults
           getAlternatives={this.getAlternatives}
           results={this.state.searchResults}
+        />
+        <Alternatives
+          alternatives={this.state.alternatives}
         />
       </div>
     );
