@@ -12,7 +12,12 @@ body {
   margin: 10px;
 }
 
+.single-alternative {
+  background: #e2ffe9;
+  margin: 10px;
+}
+
 .single-search-result {
   margin: 10px;
-  background: #9ebced
+  background: #9ebced;
 }
