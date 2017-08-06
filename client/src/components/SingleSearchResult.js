@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SingleSearchResult = ({result, getRXCUI}) => {
-  const {rxcui, name, synonym} = result;
-  console.log('single', rxcui, synonym);
-  return (
-    <div className="single-search-result" onClick={getRXCUI}>
-      <div>{name}</div>
-      <div>{synonym}</div>
-    </div>
-  );
-};
+class SingleSearchResult extends Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.props.getAlternatives(this.props.result.rxcui);
+  }
+  render() {
+    const { rxcui, name, synonym } = this.props.result;
+    return (
+      <div className="single-search-result" onClick={this.handleClick}>
+        <div>{name}</div>
+        <div>{synonym}</div>
+      </div>
+    );
+  }
+}
 
 
 export default SingleSearchResult;
