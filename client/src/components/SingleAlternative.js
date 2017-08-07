@@ -5,12 +5,16 @@ class SingleAlternative extends Component {
     const { name, synonym } = this.props.alternative;
     return (
       <div className="single-alternative" >
-        <div>{name}</div>
-        <div>{synonym}</div>
+        <span>
+          <div>Name: {name}</div>
+        </span>
+        <span>
+          <div>Synonym: {synonym}</div>
+        </span>
       </div>
     );
   }
 }
 
 
-export default SingleAlternative ;
+export default SingleAlternative;

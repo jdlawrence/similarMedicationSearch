@@ -11,9 +11,13 @@ class SingleSearchResult extends Component {
   render() {
     const { name, synonym } = this.props.result;
     return (
-      <div className="single-search-result" onClick={this.handleClick}>
-        <div>{name}</div>
-        <div>{synonym}</div>
+      <div className="single-search-result" >
+        <button className="result-button">
+          <div onClick={this.handleClick}>Name: <span>{name}</span></div>
+        </button>
+        <button className="result-button">
+          <div onClick={this.handleClick}>Synonym: <span>{synonym}</span></div>
+        </button>
       </div>
     );
   }
