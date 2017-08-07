@@ -23,7 +23,7 @@ class App extends Component {
         this.setState({ alternatives });
       })
       .catch(err => {
-        console.log('errhwere', err);
+        console.log('error', err);
       });
   }
   getMedMatches(medicine) {
@@ -32,7 +32,8 @@ class App extends Component {
         let results = data.data.drugGroup.conceptGroup[1].conceptProperties;
         this.setState({
           searchResults: results,
-          errorInSearch: false
+          errorInSearch: false,
+          alternatives: []
         });
       })
       .catch(err => {
