@@ -39,7 +39,7 @@ In the root directory run:
 ```
 $ npm run start-dev
 ```
-
-This utlizes the RxNorm API. Here's a screenshot of what it looks like:
+### Further Information:
+This utlizes the [RxNorm API](https://rxnav.nlm.nih.gov/RxNormAPIREST.html#label:functions). Here's a screenshot of what it looks like:
 
 ![Similar Medication Search](./screenshot.png)
