@@ -31,6 +31,17 @@ body {
 .right-column {
   flex-basis: 60%;
 }
+.result-button {
+  background:none;
+  border:none;
+  font-size:1em;
+  color: black;
+}
+
+.result-button span {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .search-results {
   margin: 10px;
 }
@@ -38,9 +49,15 @@ body {
 .single-alternative {
   background: #e2ffe9;
   margin: 10px;
+  padding: 3px;
+}
+
+.single-alternative span {
+  text-align: center;
 }
 
 .single-search-result {
-  margin: 10px;
   background: #9ebced;
+  margin: 10px;
+  padding: 3px;
 }
