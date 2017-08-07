@@ -2,12 +2,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  box-sizing: border-box;
 }
 .app {
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
+}
+.column-wrapper {
+  display: flex;
+  flex-basis: 100%;
+}
+.error-in-search {
+  color: red;
+  font-style: italic;
 }
 .header {
   flex-basis: 100%;
@@ -17,11 +24,12 @@ body {
 }
 .left-column {
   border-right: 1px solid black;
-  flex: 0 0 40%
+  flex-basis: 40%; 
+  min-width: 40%; 
+  box-sizing: border-box;
 }
 .right-column {
-  flex: 0 0 60%;
-  max-width: 60%
+  flex-basis: 60%;
 }
 .search-results {
   margin: 10px;
