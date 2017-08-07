@@ -9,7 +9,7 @@ class SingleSearchResult extends Component {
     this.props.getAlternatives(this.props.result.rxcui);
   }
   render() {
-    const { rxcui, name, synonym } = this.props.result;
+    const { name, synonym } = this.props.result;
     return (
       <div className="single-search-result" onClick={this.handleClick}>
         <div>{name}</div>
